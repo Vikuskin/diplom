@@ -3,15 +3,17 @@ const slider = () => {
         slide = slider.querySelectorAll('.item'),
         table = slider.querySelectorAll('.table');
 
-console.log(slide);
-  // slide.forEach(() => {
-  //   const dot = document.createElement('li');
-  //   dot.classList.add('slick-dots');
-  //   slider.append(dot);
-  // });
+  const slickDots = document.createElement('div');
+  slickDots.classList.add('slick-dots');
+  slider.append(slickDots);
+  slide.forEach(() => {
+    const dot = document.createElement('li');
+    dot.classList.add('dot');
+    slickDots.append(dot);
+  });
 
-  // const dot = document.querySelectorAll('.dot');
-  // dot[0].classList.add('dot-active');
+  const dot = slickDots.querySelectorAll('li');
+  dot[0].classList.add('slick-active');
 
   let currentSlide = 0,
     interval;
@@ -25,71 +27,63 @@ console.log(slide);
   };
 
   const autoPlaySlide = () => {
+    prevSlide(slide, currentSlide, 'item-active');
     prevSlide(table, currentSlide, 'active');
-    // prevSlide(dot, currentSlide, 'dot-active');
+    prevSlide(dot, currentSlide, 'slick-active');
 
     currentSlide++;
     if (currentSlide >= slide.length) {
       currentSlide = 0;
     }
-
+    
+    nextSlide(slide, currentSlide, 'item-active');
     nextSlide(table, currentSlide, 'active');
-    // nextSlide(dot, currentSlide, 'dot-active');
+    nextSlide(dot, currentSlide, 'slick-active');
   };
 
-  const startSlide = (time = 1000) => {
+  const startSlide = (time = 3000) => {
     interval = setInterval(autoPlaySlide, time);
   };
 
-  // const stopSlide = () => {
-  //   clearInterval(interval);
-  // };
+  const stopSlide = () => {
+    clearInterval(interval);
+  };
 
-  // slider.addEventListener('click', event => {
-  //   event.preventDefault();
+  slider.addEventListener('click', event => {
+    const target = event.target;
 
-  //   const target = event.target;
+    if (!target.matches('.dot')) {
+      return;
+    }
 
-  //   if (!target.matches('.portfolio-btn, .dot')) {
-  //     return;
-  //   }
+    prevSlide(slide, currentSlide, 'item-active');
+    prevSlide(table, currentSlide, 'active');
+    prevSlide(dot, currentSlide, 'slick-active');
 
-  //   prevSlide(slide, currentSlide, 'portfolio-item-active');
-  //   prevSlide(dot, currentSlide, 'dot-active');
+    if (target.matches('.dot')) {
+      dot.forEach((elem, index) => {
+        if (elem === target) {
+          currentSlide = index;
+        }
+      });
+    }
+    
+    nextSlide(slide, currentSlide, 'item-active');
+    nextSlide(table, currentSlide, 'active');
+    nextSlide(dot, currentSlide, 'slick-active');
+  });
 
-  //   if (target.matches('.portfolio-btn.next')) {
-  //     currentSlide++;
-  //   } else if (target.matches('.portfolio-btn.prev')) {
-  //     currentSlide--;
-  //   } else if (target.matches('.dot')) {
-  //     dot.forEach((elem, index) => {
-  //       if (elem === target) {
-  //         currentSlide = index;
-  //       }
-  //     });
-  //   }
-  //   if (currentSlide >= slide.length) {
-  //     currentSlide = 0;
-  //   }
+  slider.addEventListener('mouseover', event => {
+    if (event.target.matches('.dot')) {
+      stopSlide();
+    }
+  });
 
-  //   if (currentSlide < 0) {
-  //     currentSlide = slide.length - 1;
-  //   }
-  //   nextSlide(slide, currentSlide, 'portfolio-item-active');
-  //   nextSlide(dot, currentSlide, 'dot-active');
-  // });
-
-  // slider.addEventListener('mouseover', event => {
-  //   if (event.target.matches('.portfolio-btn') || event.target.matches('.dot')) {
-  //     stopSlide();
-  //   }
-  // });
-
-  // slider.addEventListener('mouseout', event => {
-  //   if (event.target.matches('.portfolio-btn') || event.target.matches('.dot')) {
-  //     startSlide();
-  //   }
-  // });
+  slider.addEventListener('mouseout', event => {
+    if (event.target.matches('.dot')) {
+      startSlide();
+    }
+  });
 
   startSlide();
 };

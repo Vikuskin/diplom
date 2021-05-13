@@ -1101,6 +1101,20 @@ video#video_background {
 		transition: 0.5s;
 	}
 
+	.top-slider .item {
+		opacity: 0;
+		visibility: hidden;
+		transition-duration: 3s;
+		-webkit-transform: scale(1.5);
+		-ms-transform: scale(1.5);
+		-o-transform: scale(1.5);
+		transform: scale(1.5);
+		-webkit-transition: 0.5s;
+		-o-transition: 0.5s;
+		transition: 0.5s;
+		display: none;
+	}
+
 	.top-slider .table.active {
 		-webkit-transform: scale(1);
 		-ms-transform: scale(1);
@@ -1108,6 +1122,16 @@ video#video_background {
 		transform: scale(1);
 		opacity: 1;
 		visibility: visible;
+	}
+
+	.top-slider .item-active {
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		-o-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+		visibility: visible;
+		display: block;
 	}
 }
 

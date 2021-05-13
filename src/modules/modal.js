@@ -7,8 +7,7 @@ const getModal = () => {
 
   document.addEventListener('click', event => {
     const target = event.target;
-    
-    if (target.classList.contains('callback-btn') || target.classList.contains('modal-close') || target.classList.contains('modal-overlay')){
+    if (target.classList.contains('callback-btn') || target.classList.contains('modal-close') || target.classList.contains('modal-overlay') || target.getAttribute('href') === '#application'){
       modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
       modalOverlay.style.display = modalOverlay.style.display === 'none' ? 'block' : 'none';
     }
