@@ -3,7 +3,7 @@ const accordeon = () => {
         accordeonElem = accordeon.querySelectorAll('.element'),
         accordeonTitle = accordeon.querySelectorAll('.title'),
         accordeonContent = accordeon.querySelectorAll('.element-content');
-        console.log(accordeonContent);
+  
   accordeonElem[0].classList.add('active');
   accordeonContent[0].classList.add('active');
 

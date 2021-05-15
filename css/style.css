@@ -127,7 +127,7 @@ h1,
 	font-size: 36px;
 	line-height: 1.1;
 	margin-bottom: 20px;
-	font-family: "Helios";
+	font-family: "Helios", sans-serif;
 	font-weight: bold;
 }
 
@@ -1285,6 +1285,14 @@ video#video_background {
 
 .arrow-right {
 	margin-left: 20px;
+}
+
+.services-carousel {
+	display: flex;
+}
+
+.card {
+	width: auto;
 }
 
 .services-section .element {

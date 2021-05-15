@@ -2,7 +2,7 @@ const slider = () => {
   const slider = document.querySelector('.top-slider'),
         slide = slider.querySelectorAll('.item'),
         table = slider.querySelectorAll('.table');
-
+  
   const slickDots = document.createElement('div');
   slickDots.classList.add('slick-dots');
   slider.append(slickDots);
@@ -25,12 +25,13 @@ const slider = () => {
   const nextSlide = (elem, index, strClass) => {
     elem[index].classList.add(strClass);
   };
-
+  
   const autoPlaySlide = () => {
+  
     prevSlide(slide, currentSlide, 'item-active');
     prevSlide(table, currentSlide, 'active');
     prevSlide(dot, currentSlide, 'slick-active');
-
+    
     currentSlide++;
     if (currentSlide >= slide.length) {
       currentSlide = 0;
@@ -39,6 +40,13 @@ const slider = () => {
     nextSlide(slide, currentSlide, 'item-active');
     nextSlide(table, currentSlide, 'active');
     nextSlide(dot, currentSlide, 'slick-active');
+    // if (currentSlide === 0) {
+    //   slide[2].style.display = 'none';
+    //   slide[currentSlide].style.display = 'block';
+    // } else {
+    //   slide[currentSlide - 1].style.display = 'none';
+    //   slide[currentSlide].style.display = 'block';
+    // }
   };
 
   const startSlide = (time = 3000) => {
