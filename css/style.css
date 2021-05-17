@@ -333,7 +333,8 @@ a.absolute {
 	cursor: pointer;
 }
 
-.modal-callback {
+.modal-callback,
+.modal-application {
 	display: none;
 	position: fixed;
 	top: 20%;

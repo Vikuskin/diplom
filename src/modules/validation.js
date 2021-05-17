@@ -1,15 +1,19 @@
 const validation = () => {
-  const formName = document.querySelector('.form-control'),
-        formPhone = document.querySelector('.tel');
+  const formName = document.getElementsByName('fio'),
+        formPhone = document.getElementsByName('tel');
 
-
-  formName.addEventListener('input', () => {
-    formName.value = formName.value.replace(/[^а-яА-ЯёЁ' ']/g, '');
+  formName.forEach(item => {
+    item.addEventListener('input', () => {
+      item.value = item.value.replace(/[^а-яА-ЯёЁ' ']/g, '');
+    });
   });
-
-  formPhone.addEventListener('input', () => {
-    formPhone.value = formPhone.value.replace(/[^0-9+]/, '');
+  
+  formPhone.forEach(item => {
+    item.addEventListener('input', () => {
+      item.value = item.value.replace(/[^0-9+]/, '');
+    });
   });
+  
 };
 
 export default validation;
