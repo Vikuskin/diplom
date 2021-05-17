@@ -5,7 +5,7 @@ const upArrow = () => {
   const clientServSection = servicesSection.getBoundingClientRect();
 
   arrow.style.display = 'none';
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset || document.documentElement.scrollTop;
     
     if (scrolled >= clientServSection.top) {
@@ -14,7 +14,7 @@ const upArrow = () => {
       arrow.style.display = 'none';
     }
   });
-	arrow.addEventListener('click', event => { 
+	arrow.addEventListener('click', () => { 
     const start = document.querySelector('.main-wrapper');
     start.scrollIntoView({
       behavior: 'smooth',

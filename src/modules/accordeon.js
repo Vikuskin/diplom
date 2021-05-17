@@ -17,7 +17,7 @@ const accordeon = () => {
   };
 
   for (let i = 0; i < accordeonElem.length; i++) {
-    accordeonTitle[i].addEventListener('click', event => {
+    accordeonTitle[i].addEventListener('click', () => {
       deleteElem();
       accordeonElem[i].classList.add('active');
       accordeonContent[i].classList.add('active');
