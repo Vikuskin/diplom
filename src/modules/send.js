@@ -3,10 +3,13 @@ const send = () => {
         statusMessage = document.createElement('div'),
         loadMessage = 'Загрузка...',
         successMessage = 'Спасибо, мы скоро свяжемся с вами',
-        errorMessage = 'Что-то пошло не так',
-        input = document.getElementsByTagName('input');
-
+        errorMessage = 'Что-то пошло не так';
+  
   statusMessage.style.cssText = 'font-size: 2rem;';
+
+  const emptyMessage = () => {
+    statusMessage.remove();
+  };
 
   for (let i = 0; i < form.length; i++) {
 
@@ -36,11 +39,12 @@ const send = () => {
       }
       request.send(JSON.stringify(data));
 
-      for (let i = 0; i < input.length; i++) {
-        input[i].value = '';
-      }
+      const inputValue = Array.prototype.slice.call(document.getElementsByTagName('input'));
+      inputValue.map(input => input.value = '');
       
+      setTimeout(emptyMessage, 5000);
     });
+    
   }
 };
 
