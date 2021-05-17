@@ -14,5 +14,4 @@ const getModal = () => {
   });
 };
 
-getModal();
-// export default getModal;
+export default getModal;

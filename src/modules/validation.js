@@ -12,6 +12,4 @@ const validation = () => {
   });
 };
 
-validation();
-
-// export default validation;
+export default validation;

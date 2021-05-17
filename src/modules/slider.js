@@ -40,13 +40,6 @@ const slider = () => {
     nextSlide(slide, currentSlide, 'item-active');
     nextSlide(table, currentSlide, 'active');
     nextSlide(dot, currentSlide, 'slick-active');
-    // if (currentSlide === 0) {
-    //   slide[2].style.display = 'none';
-    //   slide[currentSlide].style.display = 'block';
-    // } else {
-    //   slide[currentSlide - 1].style.display = 'none';
-    //   slide[currentSlide].style.display = 'block';
-    // }
   };
 
   const startSlide = (time = 3000) => {
@@ -96,6 +89,4 @@ const slider = () => {
   startSlide();
 };
 
-slider();
-
-// export default slider;
+export default slider;

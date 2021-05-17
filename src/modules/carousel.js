@@ -52,6 +52,4 @@ const carousel = () => {
 
 };
 
-carousel();
-
-// export default carousel;
+export default carousel;

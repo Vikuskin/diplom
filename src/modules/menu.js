@@ -13,5 +13,4 @@ const getMenu = () => {
     }));
 };
 
-getMenu();
-// export default getMenu;
+export default getMenu;

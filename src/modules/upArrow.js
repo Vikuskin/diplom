@@ -23,5 +23,4 @@ const upArrow = () => {
   });
 };
 
-upArrow();
-// export default upArrow;
+export default upArrow;
