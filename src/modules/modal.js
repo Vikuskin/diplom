@@ -23,7 +23,7 @@ const getModal = () => {
       modalApp.style.display = 'none';
       modal.style.display = 'none';
     }
-    
+  
   });
 };
 

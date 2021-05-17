@@ -3,12 +3,18 @@ const send = () => {
         statusMessage = document.createElement('div'),
         loadMessage = 'Загрузка...',
         successMessage = 'Спасибо, мы скоро свяжемся с вами',
-        errorMessage = 'Что-то пошло не так';
+        errorMessage = 'Что-то пошло не так',
+        mistakeMessage = 'Некорректные данные';
   
   statusMessage.style.cssText = 'font-size: 2rem;';
 
-  const emptyMessage = () => {
-    statusMessage.remove();
+  const closeModal = () => {
+    const modal = document.querySelector('.modal-callback'),
+        modalApp = document.getElementById('application'),
+        modalOverlay = document.querySelector('.modal-overlay');
+    modal.style.display = 'none';
+    modalApp.style.display = 'none';
+    modalOverlay.style.display = 'none';
   };
 
   for (let i = 0; i < form.length; i++) {
@@ -16,6 +22,16 @@ const send = () => {
     form[i].addEventListener('submit', event => {
       event.preventDefault();
       form[i].appendChild(statusMessage);
+
+      const formName = form[i].getElementsByTagName('input').fio,
+            formPhone = form[i].getElementsByTagName('input').tel;
+            console.log(formName);
+            console.log(formPhone);
+
+      if (formName.value === '' || formPhone.value === '' || formPhone.value.length < 7 || formPhone.value.length > 12) {
+        statusMessage.textContent = mistakeMessage;
+        return;
+      }
       
       const request = new XMLHttpRequest();
       request.addEventListener('readystatechange', () => {
@@ -42,7 +58,7 @@ const send = () => {
       const inputValue = Array.prototype.slice.call(document.getElementsByTagName('input'));
       inputValue.map(input => input.value = '');
       
-      setTimeout(emptyMessage, 5000);
+      setTimeout(closeModal, 4000);
     });
     
   }
